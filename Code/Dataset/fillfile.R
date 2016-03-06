@@ -32,4 +32,4 @@ set.seed(251)
 #Save to a field in GRE_Writing column, a value between 2.5 and 6, if any that field is having the value 'NA' (is.na), else ignore.
 dataset$GRE_Writing <- ifelse(is.na(dataset$GRE_Writing), GRE.awa[floor(runif(8, min=2.5, max=6))], dataset$GRE_Writing)
 #Write the file as test100.csv
-write.csv(dataset, file="test100.csv")
+write.csv(dataset, file="test100.csv",row.names = FALSE)
