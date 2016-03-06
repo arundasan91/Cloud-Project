@@ -11,10 +11,17 @@ set.seed(124)
 #make sample values
 GRE.awa = c(2,2.5,3,3.5,4,4.5,5,5.5)
 
-#I'm working on correcting this one. Everything else works fine
-#dataset$Is_new_GRE <- ifelse(dataset$Is_new_GRE == "TRUE", dataset$Is_new_GRE, "FALSE")
+#typeof(dataset$Is_new_GRE)
+#Type will be "integer"
+dataset$Is_new_GRE <- as.character(dataset$Is_new_GRE)
+#typeof(dataset$Is_new_GRE)
+#Type will be "character"
 
-#I'm not sure if the seed is required here. runif makes use of it or not, please comment.
+#UPDATE THE DATASET
+
+#Update the Is_new_GRE field
+dataset[,"Is_new_GRE"] <- ifelse(dataset[,"Is_new_GRE"] == "", "FALSE", "TRUE")
+#Set the seed to different values to generate different series of random numbers
 set.seed(100)
 #Save to a field in GRE_Verbal column, a value between 140 and 170, if any that field is having the value 'NA' (is.na), else ignore.
 dataset$GRE_Verbal <- ifelse(is.na(dataset$GRE_Verbal), floor(runif(35, min=140, max=170)), dataset$GRE_Verbal)
