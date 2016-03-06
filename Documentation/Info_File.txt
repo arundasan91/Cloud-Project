@@ -1,0 +1,16 @@
+#Data
+
+read.csv("filename.csv",            #name of file
+         header = TRUE,             #are there column names in 1st row?
+         sep = ",",                 #what separates rows?
+         as.is = !stringsAsFactors, #turn off automatic conversion of character data to factors
+         colClasses = NA            # to convert everything to character data set to "character"
+         na.string = "NA"           # could be "." for SAS files
+         skip = 0,                  #number of rows to skip at the top of the file.  Can be set >0
+                                    #  if there are comments contained at the top of the file
+         strip.white = TRUE,        #strip out extra white space in strings.  For example, " 0.1" = "0.1"
+         fill = TRUE,               #fill in rows that have unequal numbers of columns
+         comment.char = "#",        #character used for comments that should not be read in
+         stringsAsFactors = FALSE   #Another control for deciding whether characters should be converted to factor
+         )
+
