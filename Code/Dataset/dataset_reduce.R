@@ -12,4 +12,4 @@ colnames(d_subset) <- c("ID","Univ_Name","Major","Degree","Season","Decision","U
 write.csv(d_subset, file="datareduced.csv")
 #write the first 100 entries into data100.csv
 data100 <- d_subset[1:100,]
-write.csv(data100,file="data100.csv")
+write.csv(data100,file="data100.csv",row.names = FALSE)
