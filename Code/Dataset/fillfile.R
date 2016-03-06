@@ -14,10 +14,15 @@ GRE.awa = c(2,2.5,3,3.5,4,4.5,5,5.5)
 #I'm working on correcting this one. Everything else works fine
 #dataset$Is_new_GRE <- ifelse(dataset$Is_new_GRE == "TRUE", dataset$Is_new_GRE, "FALSE")
 
+#I'm not sure if the seed is required here. runif makes use of it or not, please comment.
 set.seed(100)
+#Save to a field in GRE_Verbal column, a value between 140 and 170, if any that field is having the value 'NA' (is.na), else ignore.
 dataset$GRE_Verbal <- ifelse(is.na(dataset$GRE_Verbal), floor(runif(35, min=140, max=170)), dataset$GRE_Verbal)
 set.seed(9)
+#Save to a field in GRE_Quant column, a value between 140 and 170, if any that field is having the value 'NA' (is.na), else ignore.
 dataset$GRE_Quant <- ifelse(is.na(dataset$GRE_Quant), floor(runif(35, min=140, max=170)), dataset$GRE_Quant)
 set.seed(251)
-dataset$GRE_Writing <- ifelse(is.na(dataset$GRE_Writing), GRE.awa[floor(runif(8, min=2.5, max=8))], dataset$GRE_Writing)
+#Save to a field in GRE_Writing column, a value between 2.5 and 6, if any that field is having the value 'NA' (is.na), else ignore.
+dataset$GRE_Writing <- ifelse(is.na(dataset$GRE_Writing), GRE.awa[floor(runif(8, min=2.5, max=6))], dataset$GRE_Writing)
+#Write the file as test100.csv
 write.csv(dataset, file="test100.csv")
