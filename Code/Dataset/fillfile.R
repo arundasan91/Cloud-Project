@@ -7,7 +7,7 @@ dataset <- read.csv("data100.csv")
 #read the number of rows
 num.row = nrow(dataset)
 #set a seed
-set.seed(124)
+set.seed(125)
 #make sample values
 GRE.awa = c(2,2.5,3,3.5,4,4.5,5,5.5)
 
