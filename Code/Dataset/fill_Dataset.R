@@ -28,10 +28,17 @@ set.seed(9)
 dataset$GRE_Quant <- ifelse(is.na(dataset$GRE_Quant), floor(runif(35, min=140, max=170)), dataset$GRE_Quant)
 set.seed(251)
 #Save to a field in GRE_Writing column, a value between 2.5 and 6, if any that field is having the value 'NA' (is.na), else ignore.
-dataset$GRE_Writing <- ifelse(is.na(dataset$GRE_Writing), GRE.awa[floor(runif(8, min=2.5, max=6))], dataset$GRE_Writing)
+dataset$GRE_Writing <- ifelse(is.na(dataset$GRE_Writing), GRE.awa[floor(runif(8, min=3, max=6))], dataset$GRE_Writing)
 #Update the GPA
-dataset$UG_GPA <- ifelse(is.na(dataset$UG_GPA), trunc(runif(35, min=3, max=4)), dataset$UG_GPA)
+dataset$UG_GPA <- ifelse(is.na(dataset$UG_GPA), trunc(runif(10, min=3, max=4)), dataset$UG_GPA)
 #Update the Is_new_GRE field
 dataset[,"Is_new_GRE"] <- ifelse(dataset$GRE_Verbal > 170, "FALSE", "TRUE")
+#Create sumGRE column
+dataset$sumGRE <- as.integer(dataset$GRE_Verbal)+as.integer(dataset$GRE_Quant)+as.integer(dataset$GRE_Writing)
+#Add the new University Names
+univName <- readLines("univName2.txt")
+dataset$School_Name <- unlist(univName)
+#Write the dataset into a csv file.
+write.csv(dataset, file="finaldataset.csv",row.names = FALSE)
 #Write the file as test100.csv
-write.csv(dataset, file="test100.csv",row.names = FALSE)
+write.csv(dataset[1:100,], file="test100.csv",row.names = FALSE)
