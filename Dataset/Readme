@@ -1,4 +1,11 @@
-Find the dataset's here...
+The main dataset is all_clean.csv which you can get from <ahref>[gradcaffe](https://github.com/deedy/gradcafe_data/tree/master/all)</ahref>.
+The dataset can be reduced to the required dataset by running reduce_Dataset.R.
+This will generate 'datareduced.csv' file.
+'datareduced.csv' file can be filled up using fill_Dataset.R.
+This will generate 'finaldataset.csv' which is our final dataset file in csv format.
 
 
-datasets are from : 
+Thanks to you guys !
+Abhinav
+Andrew 
+Swanand
