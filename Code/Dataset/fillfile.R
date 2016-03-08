@@ -19,8 +19,6 @@ dataset$Is_new_GRE <- as.character(dataset$Is_new_GRE)
 
 #UPDATE THE DATASET
 
-#Update the Is_new_GRE field
-dataset[,"Is_new_GRE"] <- ifelse(dataset[,"Is_new_GRE"] == "", "FALSE", "TRUE")
 #Set the seed to different values to generate different series of random numbers
 set.seed(100)
 #Save to a field in GRE_Verbal column, a value between 140 and 170, if any that field is having the value 'NA' (is.na), else ignore.
@@ -33,5 +31,7 @@ set.seed(251)
 dataset$GRE_Writing <- ifelse(is.na(dataset$GRE_Writing), GRE.awa[floor(runif(8, min=2.5, max=6))], dataset$GRE_Writing)
 #Update the GPA
 dataset$UG_GPA <- ifelse(is.na(dataset$UG_GPA), trunc(runif(35, min=3, max=4)), dataset$UG_GPA)
+#Update the Is_new_GRE field
+dataset[,"Is_new_GRE"] <- ifelse(dataset$GRE_Verbal > 170, "FALSE", "TRUE")
 #Write the file as test100.csv
 write.csv(dataset, file="test100.csv",row.names = FALSE)
